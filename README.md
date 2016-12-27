@@ -60,6 +60,7 @@
     UIButton * openBtn = [[UIButton alloc]init];
     UIButton * closeBtn = [[UIButton alloc]init];
     UIButton * okBtn = [[UIButton alloc]init];
+    
     openBtn.tag = 105;
     closeBtn.tag = 106;
     okBtn.tag = 107;
@@ -96,13 +97,21 @@
 - (void)timePickerBtnClicked:(UIButton *)btn{
     
     if (btn.tag == 105) {
+    
         [self pickerViewGetDate];
+        
     }else if (btn.tag == 106){
+    
         [self pickerViewGetDate];
+        
     }else if (btn.tag == 107){
+    
         [self pickerViewDismiss];
+        
     }else if (btn.tag == 108){
+    
         [self pickerViewDismiss];
+        
     }
 }      
 
