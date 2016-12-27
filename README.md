@@ -1,4 +1,4 @@
-     //pop time SelectView;
+# pop time SelectView;
      
 -(void)openTime{
     
@@ -22,8 +22,8 @@
         [self.view bringSubviewToFront:self.timeBtn];
     }];
     }
-    
-    //time select button
+    
+# time select button
     
 -(void)creatTimeBtn 
 {
@@ -39,7 +39,7 @@
      [[UIApplication sharedApplication].keyWindow addSubview:self.timeBtn];
 }
 
-    //time select pickerView
+# time select pickerView
     
 -(void)creatTimeView 
 {
@@ -54,7 +54,8 @@
     self.datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
     [self.pickerView addSubview:self.datePicker];
     self.pickerView.userInteractionEnabled = YES;
-    [[UIApplication sharedApplication].keyWindow addSubview:self.pickerView];  //put navgationBar into grayView
+    [[UIApplication sharedApplication].keyWindow addSubview:self.pickerView];
+    
     UIButton * openBtn = [[UIButton alloc]init];
     UIButton * openBtn = [[UIButton alloc]init];
     UIButton * closeBtn = [[UIButton alloc]init];
@@ -65,6 +66,7 @@
     NSMutableArray * array = [NSMutableArray array];
     [array addObject:openBtn];
     [array addObject:closeBtn];
+    
     for (UIButton * btn in array) {
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.layer.masksToBounds = YES;
@@ -81,6 +83,7 @@
              btn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2, 220, 50, 50);
         }
     }
+    
     okBtn.frame = CGRectMake(0, 300, [UIScreen mainScreen].bounds.size.width, 60);
     [okBtn setTitle:NSLocalizedString(@"CONFIG_ALERT_YES", nil) forState:UIControlStateNormal];
     okBtn.layer.borderColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1].CGColor;
@@ -103,7 +106,7 @@
     }
 }      
 
-     //TimeDate git
+# TimeDate git
      
 -(void)pickerViewGetDate{
 
@@ -116,8 +119,8 @@
     delayS = hour*3600 + min*60;
 
 }
-         
-     //remove subViews
+         
+# remove subViews
      
 -(void)pickerViewDismiss{
 
@@ -134,12 +137,17 @@
 - (void)singleTapGrayView{
 
     [UIView animateWithDuration:0.3 animations:^{
+    
         self.pickerView.top = self.view.Height;
         self.timeBtn.top = self.view.Height;
         [self.grayView removeFromSuperview];
+        
     } completion:^(BOOL finished) {
+    
         if (finished) {
+        
             self.tabBarController.tabBar.hidden=NO;
+            
         }
     }];
 }
