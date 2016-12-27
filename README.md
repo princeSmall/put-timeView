@@ -1,3 +1,5 @@
+     //pop time SelectView;
+     
 -(void)openTime{
     
     [UIView animateWithDuration:0.3 animations:^{
@@ -10,7 +12,6 @@
             [self.grayView addGestureRecognizer:singleTap];
         }
         [[UIApplication sharedApplication].keyWindow addSubview:self.grayView];
-//        [self.view addSubview:self.grayView];
         [self creatTimeView];
         [self creatTimeBtn];
     
@@ -20,8 +21,13 @@
         [self.view bringSubviewToFront:self.pickerView];
         [self.view bringSubviewToFront:self.timeBtn];
     }];
-}
--(void)creatTimeBtn {
+    }
+    
+    //time select button
+    
+-(void)creatTimeBtn 
+{
+
     self.timeBtn = [[UIButton alloc]initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width-20, 60)];
     self.timeBtn.layer.masksToBounds = YES;
     self.timeBtn.layer.cornerRadius = 5;
@@ -30,10 +36,13 @@
     [self.timeBtn setTitle:NSLocalizedString(@"CONFIG_ALERT_NO", nil) forState:UIControlStateNormal];
     [self.timeBtn setTitleColor:[UIColor colorWithRed:59/255.0 green:163/255.0 blue:252/255.0 alpha:1] forState:UIControlStateNormal];
     [self.timeBtn addTarget:self action:@selector(timePickerBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:self.timeBtn];
      [[UIApplication sharedApplication].keyWindow addSubview:self.timeBtn];
 }
--(void)creatTimeView {
+
+    //time select pickerView
+    
+-(void)creatTimeView 
+{
     
     
     self.pickerView =[[UIView alloc]initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width-20, 360)];
@@ -45,10 +54,9 @@
     self.datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
     [self.pickerView addSubview:self.datePicker];
     self.pickerView.userInteractionEnabled = YES;
-    [[UIApplication sharedApplication].keyWindow addSubview:self.pickerView];
-//    [self.view addSubview:self.pickerView];
-    
-    UIButton * openBtn = [[UIButton alloc]init];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.pickerView];  //put navgationBar into grayView
+    UIButton * openBtn = [[UIButton alloc]init];
+    UIButton * openBtn = [[UIButton alloc]init];
     UIButton * closeBtn = [[UIButton alloc]init];
     UIButton * okBtn = [[UIButton alloc]init];
     openBtn.tag = 105;
@@ -85,17 +93,20 @@
 - (void)timePickerBtnClicked:(UIButton *)btn{
     
     if (btn.tag == 105) {
-        [self pickerViewGetDate];
-        [self bulbVersion];
-    }else if (btn.tag == 106){
+        [self pickerViewGetDate];
+    }else if (btn.tag == 106){
         [self pickerViewGetDate];
     }else if (btn.tag == 107){
         [self pickerViewDismiss];
     }else if (btn.tag == 108){
         [self pickerViewDismiss];
     }
-}
+}      
+
+     //TimeDate git
+     
 -(void)pickerViewGetDate{
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH.mm"];
     self.timeStr = [dateFormatter stringFromDate:self.datePicker.date];
@@ -103,10 +114,13 @@
     int min = [[self.timeStr componentsSeparatedByString:@"."].lastObject intValue];
     NSLog(@"%d,%d",hour,min);
     delayS = hour*3600 + min*60;
-    [self.bulb setTimeOffBrightness:0 Duration:1000 Delay:10];
 
 }
+         
+     //remove subViews
+     
 -(void)pickerViewDismiss{
+
     [UIView animateWithDuration:0.3 animations:^{
         self.pickerView.top = self.view.Height;
         self.timeBtn.top = self.view.Height;
@@ -118,6 +132,7 @@
     }];
 }
 - (void)singleTapGrayView{
+
     [UIView animateWithDuration:0.3 animations:^{
         self.pickerView.top = self.view.Height;
         self.timeBtn.top = self.view.Height;
